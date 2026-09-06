@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="WeatherNow - A responsive weather application built with HTML, CSS and JavaScript.">
+
+    <meta name="author"
+          content="Soujanya Mathapati">
+
+    <title>WeatherNow | Weather App</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="#"
+               class="logo">
+
+                <span class="logo-icon">☁️</span>
+
+                <span>
+                    Weather<span class="highlight">Now</span>
+                </span>
+
+            </a>
+
+            <button id="locationBtn"
+                    class="location-btn">
+
+                📍 Use My Location
+
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <!-- Hero -->
+
+        <section class="hero">
+
+            <div class="badge">
+                🌤️ LIVE WEATHER
+            </div>
+
+            <h1>
+                Check the <span>Weather</span>
+            </h1>
+
+            <p>
+                Search for any city and get real-time weather
+                information instantly.
+            </p>
+
+        </section>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <section class="search-section">
+
+            <form id="searchForm"
+                  class="search-form">
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="cityInput"
+                        placeholder="Enter city name..."
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+                <button type="submit"
+                        class="search-btn">
+
+                    Search
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= LOADING ================= -->
+
+        <div id="loading"
+             class="loading hidden">
+
+            <div class="spinner"></div>
+
+            <p>Getting weather information...</p>
+
+        </div>
+
+
+        <!-- ================= ERROR ================= -->
+
+        <div id="errorMessage"
+             class="error-message hidden">
+
+            <span>⚠️</span>
+
+            <p id="errorText">
+                Unable to find weather information.
+            </p>
+
+        </div>
+
+
+        <!-- ================= WEATHER ================= -->
+
+        <section id="weatherCard"
+                 class="weather-card hidden">
+
+            <!-- Weather Top -->
+
+            <div class="weather-top">
+
+                <div>
+
+                    <p class="location-label">
+                        CURRENT WEATHER
+                    </p>
+
+                    <h2 id="cityName">
+                        Bengaluru
+                    </h2>
+
+                    <p id="date"
+                       class="date">
+                        Today
+                    </p>
+
+                </div>
+
+                <div id="weatherIcon"
+                     class="weather-icon">
+
+                    ☀️
+
+                </div>
+
+            </div>
+
+
+            <!-- Main Temperature -->
+
+            <div class="temperature-section">
+
+                <div class="temperature">
+
+                    <span id="temperature">
+                        --
+                    </span>
+
+                    <span class="degree">
+                        °C
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <h3 id="weatherDescription">
+                        Clear Sky
+                    </h3>
+
+                    <p class="feels-like">
+                        Feels like
+                        <strong id="feelsLike">
+                            --
+                        </strong>°C
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Weather Details -->
+
+            <div class="details-grid">
+
+                <div class="detail-card">
+
+                    <div class="detail-icon">
+                        💧
+                    </div>
+
+                    <div>
+
+                        <span>
+                            HUMIDITY
+                        </span>
+
+                        <strong id="humidity">
+                            --%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <div class="detail-icon">
+                        💨
+                    </div>
+
+                    <div>
+
+                        <span>
+                            WIND SPEED
+                        </span>
+
+                        <strong id="windSpeed">
+                            -- m/s
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <div class="detail-icon">
+                        🌡️
+                    </div>
+
+                    <div>
+
+                        <span>
+                            PRESSURE
+                        </span>
+
+                        <strong id="pressure">
+                            -- hPa
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <div class="detail-icon">
+                        👁️
+                    </div>
+
+                    <div>
+
+                        <span>
+                            VISIBILITY
+                        </span>
+
+                        <strong id="visibility">
+                            -- km
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Sunrise Sunset -->
+
+            <div class="sun-section">
+
+                <div class="sun-card">
+
+                    <span class="sun-icon">
+                        🌅
+                    </span>
+
+                    <div>
+
+                        <span>
+                            SUNRISE
+                        </span>
+
+                        <strong id="sunrise">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sun-card">
+
+                    <span class="sun-icon">
+                        🌇
+                    </span>
+
+                    <div>
+
+                        <span>
+                            SUNSET
+                        </span>
+
+                        <strong id="sunset">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EMPTY STATE ================= -->
+
+        <section id="emptyState"
+                 class="empty-state">
+
+            <div class="empty-icon">
+                🌍
+            </div>
+
+            <h2>
+                Search for a city
+            </h2>
+
+            <p>
+                Enter a city name above to see its current
+                weather conditions.
+            </p>
+
+        </section>
+
+
+        <!-- ================= TIPS ================= -->
+
+        <section class="tips">
+
+            <div class="tip-card">
+
+                <span>
+                    🌡️
+                </span>
+
+                <div>
+
+                    <h3>
+                        Real-Time Data
+                    </h3>
+
+                    <p>
+                        Get current weather information
+                        for cities around the world.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="tip-card">
+
+                <span>
+                    📍
+                </span>
+
+                <div>
+
+                    <h3>
+                        Location Search
+                    </h3>
+
+                    <p>
+                        Search cities manually or use
+                        your current location.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="tip-card">
+
+                <span>
+                    📱
+                </span>
+
+                <div>
+
+                    <h3>
+                        Responsive
+                    </h3>
+
+                    <p>
+                        Designed to work smoothly on
+                        mobile, tablet and desktop.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <strong>
+            ☁️ WeatherNow
+        </strong>
+
+        <p>
+            Built with HTML, CSS & JavaScript
+        </p>
+
+        <p>
+            © 2026 Soujanya Mathapati
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
